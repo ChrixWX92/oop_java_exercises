@@ -1,38 +1,41 @@
 package com.techreturners.cats;
 
-public class DomesticCat implements Cat {
+import java.util.concurrent.ThreadLocalRandom;
 
-    boolean asleep;
-    String setting = "domestic";
+public class DomesticCat extends Feline {
 
     public DomesticCat() {
+        this.eatMessage = "Purrrrrrr";
+        this.averageHeight = 23;
     }
 
     @Override
-    public void eat() {
-
+    public String eat() {
+        if (this.hashCode() % 3 == 0 && ThreadLocalRandom.current().nextBoolean())
+            return "*unimpressed groan*";
+        return this.eatMessage;
     }
 
     @Override
     public void goToSleep() {
-
+        this.asleep = true;
     }
 
     @Override
     public void wakeUp() {
+        this.asleep = false;
+    }
 
+
+    @Override
+    public int getAverageHeight() {
+        return this.averageHeight;
     }
 
     @Override
-    public void run() {
-
-    }
-
     public String getSetting() {
-        return setting;
+        return "domestic";
     }
-    public boolean isAsleep() {
-        return asleep;
-    }
+
 
 }

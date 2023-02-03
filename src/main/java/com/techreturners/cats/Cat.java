@@ -2,12 +2,14 @@ package com.techreturners.cats;
 
 interface Cat {
 
-    void eat();
+    String eat();
     void goToSleep();
     void wakeUp();
-    void run();
-    default String isAsleep(){
-        return "Cat should be awake by default";
-    };
+    default void run(){};
+    boolean isAsleep();
+    int getAverageHeight();
+    default String getSetting() {
+        return "wild";
+    }
 
 }
